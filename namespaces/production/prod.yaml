@@ -1,1 +1,22 @@
-
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  namespace: demo
+  labels:
+    app: hello
+  annotations:
+    fluxcd.io/automated: 'true'
+spec:
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name: hello
+        image: vishnu4772/prod-gitops:hellov1.0
